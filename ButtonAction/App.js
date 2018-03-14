@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { SafeAreaView } from 'react-navigation';
 import {
   Alert,
   Button,
@@ -11,6 +12,10 @@ import {
 } from 'react-native';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
 
   _onPressButton = () =>{
     const {Text} = this.state;
@@ -19,7 +24,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <TextInput
           style={styles.textInputContainer}
           multiline={true}
@@ -35,7 +40,7 @@ export default class App extends Component {
             fontSize="20"
           />
         </View>
-      </View> 
+      </SafeAreaView> 
     );
   }
 }
