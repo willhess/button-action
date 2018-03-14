@@ -22,13 +22,17 @@ export default class App extends Component {
       <View style={styles.container}>
         <TextInput
           style={styles.textInputContainer}
+          multiline={true}
           placeholder="Type Here..."
+          color="steelblue"
           onChangeText={Text => this.setState({Text})}
         />
         <View style={styles.buttonContainer}>
           <Button
             onPress={this._onPressButton}
             title="Press Me!"
+            color="powderblue"
+            fontSize="20"
           />
         </View>
       </View> 
@@ -38,14 +42,17 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-   flex: 1,
-   justifyContent: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'powderblue'
   },
   textInputContainer: {
     textAlign: 'center',
     fontSize: 36
   },
   buttonContainer: {
-    margin: 20
+    margin: 20,
+    backgroundColor: 'steelblue'
   }
 });
