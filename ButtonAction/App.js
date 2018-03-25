@@ -12,10 +12,16 @@ class Homescreen extends Component {
     };
   }
 
-  static navigationOptions = { title: 'Homescreen' };
+  static navigationOptions = { title: 'Home' };
 
-  FunctionToOpenFormView = () => {
-    this.props.navigation.navigate('Second');
+  FunctionToOpenFormCompletion = () => {
+    this.props.navigation.navigate(
+      'Second', {
+        firstFieldInputText: this.state.firstFieldInputText,
+        secondFieldInputText: this.state.secondFieldInputText,
+        thirdFieldInputText: this.state.thirdFieldInputText
+      }
+    );
   }
 
   render() {
@@ -42,7 +48,7 @@ class Homescreen extends Component {
         />
         <View style={styles.buttonContainer}>
           <Button
-            onPress={this.FunctionToOpenFormView}
+            onPress={this.FunctionToOpenFormCompletion}
             title="Press Me!"
             fontSize="20"
           />
@@ -52,20 +58,20 @@ class Homescreen extends Component {
   }
 }
 
-class FormView extends Component {
-  static navigationOptions = { title: 'FormView' };
+class CompletionView extends Component {
+  static navigationOptions = { title: '' };
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.textStyle}> 
-          {this.props.firstFieldInputText}
+          {this.props.navigation.state.params.firstFieldInputText}
         </Text>
         <Text style={styles.textStyle}>
-          {this.props.secondFieldInputText}
+          {this.props.navigation.state.params.secondFieldInputText}
         </Text>
         <Text style={styles.textStyle}>
-          {this.props.thirdFieldInputText} 
+          {this.props.navigation.state.params.thirdFieldInputText} 
         </Text>
       </View>
       
@@ -75,7 +81,7 @@ class FormView extends Component {
 
 export default Project = StackNavigator({ 
   First: { screen: Homescreen }, 
-  Second: { screen: FormView } }
+  Second: { screen: CompletionView }}
 );
 
 const styles = StyleSheet.create({
